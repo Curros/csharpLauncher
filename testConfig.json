@@ -3,7 +3,9 @@
     "Name": "Notepad",
     "Description": "Launching Notepad to check if all works as expected",
     "Type": "RunApp",
-    "ShouldRestartApp": true,
+    "Path": "Notepad.exe",
+    "ShouldRestartApp": false,
+    "UseShellExecute": false,
     "Parameters": [
       "testConfig.json"
     ]

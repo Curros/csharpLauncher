@@ -1,20 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using csharpLauncher.Enums;
+using csharpLauncher.Validation;
+
 
 namespace csharpLauncher.Steps
 {
-    internal abstract class StepBase : IStepExec
+    internal abstract class StepBase<T> : IStepExec where T : Model.StepBase 
     {
-        private readonly Model.StepBase _step;
+        protected readonly T _step;
 
-        public StepBase(Model.StepBase step)
+        public StepBase(T step)
         {
             _step = step;
         }
 
         public abstract Task ExecuteAsync();
+
+        public virtual List<StepValidationResult> Validate()
+        {
+            var rslt = new List<StepValidationResult>();
+
+            if (string.IsNullOrEmpty(_step.Name))
+                rslt.Add(
+                    new StepValidationResult(ValidationSeverity.Info, "Step has no name."));
+
+            return rslt;
+        }
     }
 }

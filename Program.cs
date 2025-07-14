@@ -1,10 +1,11 @@
 ﻿using csharpLauncher.Services;
+using System.Threading.Tasks;
 
 namespace csharpLauncher
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.WithExceptionDetails()
@@ -27,7 +28,7 @@ namespace csharpLauncher
                     throw new FileNotFoundException("Can´t find the provided JSON config file path", jsonPath);
 
                 var runner = new StepService();
-                runner.RunAsync(jsonPath);
+                await runner.RunAsync(jsonPath);
 
             }
             catch (Exception ex)

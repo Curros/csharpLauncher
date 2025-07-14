@@ -1,7 +1,10 @@
 ﻿using csharpLauncher.Enums;
+using csharpLauncher.Services;
 
 namespace csharpLauncher.Model
 {
+    [JsonConverter(typeof(StepConverter))]
+    [JsonObject]
     internal class StepBase
     {
         /// <summary>
