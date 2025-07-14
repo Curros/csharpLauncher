@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "csharpLauncher": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\testConfig.json"
+    }
+  }
+}
